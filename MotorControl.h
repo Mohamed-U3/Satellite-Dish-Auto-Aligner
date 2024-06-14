@@ -5,51 +5,51 @@
 void setupMotors()
 {
   // Set the Pins of the Motors to Output
-  pinMode(MOTOR1_CW   ,OUTPUT);
-  pinMode(MOTOR1_CCW  ,OUTPUT);
-  pinMode(MOTOR2_CW   ,OUTPUT);
-  pinMode(MOTOR2_CCW  ,OUTPUT);
-  digitalWrite(MOTOR1_CW  ,LOW);
-  digitalWrite(MOTOR1_CCW ,LOW);
-  digitalWrite(MOTOR2_CW  ,LOW);
-  digitalWrite(MOTOR2_CCW ,LOW);
+  pinMode(MOTOR1_CW_PIN   ,OUTPUT);
+  pinMode(MOTOR1_CCW_PIN  ,OUTPUT);
+  pinMode(MOTOR2_CW_PIN   ,OUTPUT);
+  pinMode(MOTOR2_CCW_PIN  ,OUTPUT);
+  digitalWrite(MOTOR1_CW_PIN  ,LOW);
+  digitalWrite(MOTOR1_CCW_PIN ,LOW);
+  digitalWrite(MOTOR2_CW_PIN  ,LOW);
+  digitalWrite(MOTOR2_CCW_PIN ,LOW);
 }
 
 
 void Set_Motor1_CW()
 {
-  digitalWrite(MOTOR1_CCW ,LOW);
-  digitalWrite(MOTOR1_CW  ,HIGH);
+  digitalWrite(MOTOR1_CCW_PIN ,LOW);
+  digitalWrite(MOTOR1_CW_PIN  ,HIGH);
 }
 
 void Set_Motor1_CCW()
 {
-  digitalWrite(MOTOR1_CW  ,LOW);
-  digitalWrite(MOTOR1_CCW ,HIGH);
+  digitalWrite(MOTOR1_CW_PIN  ,LOW);
+  digitalWrite(MOTOR1_CCW_PIN ,HIGH);
 }
 
 void Stop_Motor1()
 {
-  digitalWrite(MOTOR1_CW  ,LOW);
-  digitalWrite(MOTOR1_CCW ,LOW);
+  digitalWrite(MOTOR1_CW_PIN  ,LOW);
+  digitalWrite(MOTOR1_CCW_PIN ,LOW);
 }
 
 void Set_Motor2_CW()
 {
-  digitalWrite(MOTOR2_CCW ,LOW);
-  digitalWrite(MOTOR2_CW  ,HIGH);
+  digitalWrite(MOTOR2_CCW_PIN ,LOW);
+  digitalWrite(MOTOR2_CW_PIN  ,HIGH);
 }
 
 void Set_Motor2_CCW()
 {
-  digitalWrite(MOTOR2_CW  ,LOW);
-  digitalWrite(MOTOR2_CCW ,HIGH);
+  digitalWrite(MOTOR2_CW_PIN  ,LOW);
+  digitalWrite(MOTOR2_CCW_PIN ,HIGH);
 }
 
 void Stop_Motor2()
 {
-  digitalWrite(MOTOR2_CW  ,LOW);
-  digitalWrite(MOTOR2_CCW ,LOW);
+  digitalWrite(MOTOR2_CW_PIN  ,LOW);
+  digitalWrite(MOTOR2_CCW_PIN ,LOW);
 }
 
 #endif  //MOTORCONTROL_H
