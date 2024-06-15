@@ -61,4 +61,10 @@ void setupEEPROM()
   }
 }
 
+void saveCurrentAngles()
+{
+  EEPROM.put(int_target_angle1_ADDRESS, MPU_Angle());
+  EEPROM.put(int_target_angle2_ADDRESS, loopCompass());
+}
+
 #endif  //EEPROMLIBRARY_H

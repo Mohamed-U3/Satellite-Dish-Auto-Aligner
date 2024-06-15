@@ -4,8 +4,12 @@
 #include "Config.h"
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include "MotorControl.h"
+#include "internalEEPROM.h"
 
 volatile bool buttonPressed[] = {false, false, false, false, false};
+extern int target_angle1;
+extern int target_angle2;
 
 // ISR for PCINT0_vect (handles D8 to D10)
 ISR(PCINT0_vect)
@@ -59,6 +63,12 @@ void setupPinChangeInterrupts()
   PCMSK2 |= (1 << PCINT22) | (1 << PCINT23);
 }
 
+void change_target_angle()
+{
+  target_angle1 = MPU_Angle();
+  target_angle2 = loopCompass();
+}
+
 void setupButtons()
 {
   // Set button pins as input with pull-up resistors
@@ -76,17 +86,41 @@ void setupButtons()
 
 void loopButtons()
 {
-  // Check if any button was pressed
-  for (int i = 0; i < 5; i++)
+  if (buttonPressed[0]) //save the angle
   {
-    if (buttonPressed[i])
-    {
-      Serial.print("Button ");
-      Serial.print(i);
-      Serial.println(" pressed");
-      buttonPressed[i] = false; // Reset flag
-    }
+    saveCurrentAngles();
+    buttonPressed[0] = false; // Reset flag
   }
+  if (buttonPressed[1]) //save the angle
+  {
+    Set_Motor1_CW();
+    change_target_angle();
+    delay(200);
+    buttonPressed[1] = false; // Reset flag
+  }
+  if (buttonPressed[2]) //save the angle
+  {
+    Set_Motor1_CCW();
+    change_target_angle();
+    delay(200);
+    buttonPressed[2] = false; // Reset flag
+  }
+  if (buttonPressed[3]) //save the angle
+  {
+    Set_Motor2_CW();
+    change_target_angle();
+    delay(200);
+    buttonPressed[3] = false; // Reset flag
+  }
+  if (buttonPressed[4]) //save the angle
+  {
+    Set_Motor2_CCW();
+    change_target_angle();
+    delay(200);
+    buttonPressed[4] = false; // Reset flag
+  }
+  Stop_Motor1();
+  Stop_Motor2();
 }
 
 #endif //BUTTONS_H

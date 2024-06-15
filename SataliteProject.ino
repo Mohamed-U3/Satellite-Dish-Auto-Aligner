@@ -11,16 +11,16 @@ int target_angle2 = 180;
 void setup()
 {
   Serial.begin(9600);
-//  setupMotors();
-//  setupCompass();
-//  setupEEPROM();
+  setupMotors();
+  setupCompass();
+  setupEEPROM();
   setupButtons();
 }
 
 void loop()
 {
-//  Control_of_Motor1();
-//  Control_of_Motor2();
+  Control_of_Motor1();
+  Control_of_Motor2();
   loopButtons();
 }
 
