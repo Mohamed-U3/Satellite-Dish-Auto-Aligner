@@ -7,7 +7,9 @@ QMC5883LCompass compass;
 
 void setupCompass()
 {
-  compass.init(); 
+  Serial.println("Compass Init start");
+  compass.init();
+  Serial.println("Compass Init ended");
 }
 
 int loopCompass()

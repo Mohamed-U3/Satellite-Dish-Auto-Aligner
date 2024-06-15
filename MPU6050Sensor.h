@@ -19,7 +19,7 @@ int MPU_Angle()
   int value = 0;
   if (!mpu.begin())
   {
-    Serial.println("Module Not Found!!");
+    Serial.println("MPU6050 Module Not Found!!");
 //    display.println(F("Module Error"));  // set info
 //    display.display();
   }

@@ -13,7 +13,7 @@
 //#define unsigned_long_Com_1_OperationDelay_ADDRESS        (signed_char_sensorOffset2_ADDRESS          + sizeof(signed char))
 //#define unsigned_long_Com_2_OperationDelay_ADDRESS        (unsigned_long_Com_1_OperationDelay_ADDRESS + sizeof(unsigned long))
 //
-#define FirstTime_ADDRESS                                 (int_target_angle2_ADDRESS + sizeof(unsigned long))
+#define FirstTime_ADDRESS                                 (int_target_angle2_ADDRESS + sizeof(int))
 
 extern int target_angle1;
 extern int target_angle2;
@@ -34,7 +34,7 @@ String readStringFromEEPROM(int address)
 {
   String result;
   char character = EEPROM.read(address);
-  while (character != '\0')
+  for(int i = 0; i < sizeof("The First Time"); i++)
   {
     result += character;
     address++;
@@ -45,12 +45,14 @@ String readStringFromEEPROM(int address)
 
 void setupEEPROM()
 {
+  Serial.println("EEPROM init start");
   String Readings = readStringFromEEPROM(FirstTime_ADDRESS);
-
+//  Serial.print("Readings: ");   //for debugging
+//  Serial.println(Readings);   //for debugging
   if (Readings != "The First Time")
   {
     writeStringToEEPROM(FirstTime_ADDRESS, "The First Time");
-
+//    Serial.println("This is the first Time use of EEPROM!!"); //for debugging
     EEPROM.put(int_target_angle1_ADDRESS, target_angle1);
     EEPROM.put(int_target_angle2_ADDRESS, target_angle2);
   }
@@ -59,6 +61,8 @@ void setupEEPROM()
     EEPROM.get(int_target_angle1_ADDRESS, target_angle1);
     EEPROM.get(int_target_angle2_ADDRESS, target_angle2);
   }
+
+  Serial.println("EEPROM init ended");
 }
 
 void saveCurrentAngles()

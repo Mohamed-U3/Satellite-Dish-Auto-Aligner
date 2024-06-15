@@ -4,6 +4,7 @@
 
 void setupMotors()
 {
+  Serial.println("Motor init start");
   // Set the Pins of the Motors to Output
   pinMode(MOTOR1_CW_PIN   ,OUTPUT);
   pinMode(MOTOR1_CCW_PIN  ,OUTPUT);
@@ -13,6 +14,7 @@ void setupMotors()
   digitalWrite(MOTOR1_CCW_PIN ,LOW);
   digitalWrite(MOTOR2_CW_PIN  ,LOW);
   digitalWrite(MOTOR2_CCW_PIN ,LOW);
+  Serial.println("Motor init ended");
 }
 
 

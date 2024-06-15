@@ -71,6 +71,7 @@ void change_target_angle()
 
 void setupButtons()
 {
+  Serial.println("buttons init start");
   // Set button pins as input with pull-up resistors
   for (int i = 0; i < 5; i++)
   {
@@ -82,6 +83,8 @@ void setupButtons()
 
   // Enable global interrupts
   sei();
+
+  Serial.println("buttons init ended");
 }
 
 void loopButtons()
