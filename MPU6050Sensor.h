@@ -59,7 +59,8 @@ int MPU_Angle()
       corrected_angle -= 360;
     }
     value = corrected_angle;
-    //    Serial.println(value);
+    Serial.print("MPU angle: ");
+    Serial.println(value);
   }
   return value;
 }

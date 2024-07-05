@@ -84,6 +84,7 @@ void setupButtons()
   // Enable global interrupts
   sei();
 
+  pinMode(11, INPUT_PULLUP);
   Serial.println("buttons init ended");
 }
 
@@ -97,33 +98,40 @@ void loopButtons()
   if (buttonPressed[1]) //save the angle
   {
     Set_Motor1_CW();
-    change_target_angle();
+    //    change_target_angle();
     delay(200);
     buttonPressed[1] = false; // Reset flag
   }
   if (buttonPressed[2]) //save the angle
   {
     Set_Motor1_CCW();
-    change_target_angle();
+    //    change_target_angle();
     delay(200);
     buttonPressed[2] = false; // Reset flag
   }
   if (buttonPressed[3]) //save the angle
   {
     Set_Motor2_CW();
-    change_target_angle();
+    //    change_target_angle();
     delay(200);
     buttonPressed[3] = false; // Reset flag
   }
   if (buttonPressed[4]) //save the angle
   {
     Set_Motor2_CCW();
-    change_target_angle();
+    //    change_target_angle();
     delay(200);
     buttonPressed[4] = false; // Reset flag
   }
-  Stop_Motor1();
-  Stop_Motor2();
+  if(digitalRead(7) == HIGH && digitalRead(8) == HIGH)
+  {
+    Stop_Motor1();
+  }
+  if(digitalRead(9) == HIGH && digitalRead(10) == HIGH)
+  {
+    Stop_Motor2();
+  }
+
 }
 
 #endif //BUTTONS_H
