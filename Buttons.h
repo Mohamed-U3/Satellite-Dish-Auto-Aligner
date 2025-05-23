@@ -20,7 +20,7 @@ ISR(PCINT0_vect)
 
   if (interruptTime0 - lastInterruptTime0 > 200)
   { // 200 ms debounce time
-    for (int i = 2; i < 5; i++)
+    for (uint8_t i = 2; i < 5; i++)
     { // Checking D8 to D10
       if (digitalRead(buttonPins[i]) == LOW)
       { // Assuming active LOW
@@ -40,7 +40,7 @@ ISR(PCINT2_vect)
 
   if (interruptTime2 - lastInterruptTime2 > 200)
   { // 200 ms debounce time
-    for (int i = 0; i < 2; i++)
+    for (uint8_t i = 0; i < 2; i++)
     { // Checking D6 to D7
       if (digitalRead(buttonPins[i]) == LOW)
       { // Assuming active LOW
@@ -73,7 +73,7 @@ void setupButtons()
 {
   Serial.println("buttons init start");
   // Set button pins as input with pull-up resistors
-  for (int i = 0; i < 5; i++)
+  for (uint8_t i = 0; i < 5; i++)
   {
     pinMode(buttonPins[i], INPUT_PULLUP);
   }
